@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Screen Components
-import ProductScreen from "./screens/ProductScreen";
-import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./pages/ProductScreen";
+import HomeScreen from "./pages/HomeScreen";
 
 function App() {
   return (
