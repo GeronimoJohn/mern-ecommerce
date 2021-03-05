@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Screen Components
-import ProductScreen from "./pages/ProductScreen";
-import HomeScreen from "./pages/HomeScreen";
+import ProductPage from "./pages/ProductPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
           </div>
         </header>
         <main>
-          <Route path="/" exact component={HomeScreen} />
-          <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/" exact component={HomePage} />
+          <Route path="/product/:id" component={ProductPage} />
         </main>
         <footer className="row center">All right reserved</footer>
       </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from "../component/Rating";
 import data from "../data";
 
-function ProductScreen(props) {
+function ProductPage(props) {
   const product = data.products.find((x) => x._id === props.match.params.id);
   if (!product) {
     return <div> Product Not Found </div>;
@@ -47,7 +47,7 @@ function ProductScreen(props) {
                     {product.countInStock > 0 ? (
                       <span clasName="success">In Stock</span>
                     ) : (
-                      <span className="error">Unavailable</span>
+                      <span className="danger">Unavailable</span>
                     )}
                   </div>
                 </div>
@@ -63,4 +63,4 @@ function ProductScreen(props) {
   );
 }
 
-export default ProductScreen;
+export default ProductPage;
