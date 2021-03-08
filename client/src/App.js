@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // Screen Components
 import ProductPage from "./pages/ProductPage";
 import HomePage from "./pages/HomePage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <main>
           <Route path="/" exact component={HomePage} />
           <Route path="/product/:id" component={ProductPage} />
+          <Route path="/cart/:id?" component={CartPage} />
         </main>
         <footer className="row center">All right reserved</footer>
       </div>
