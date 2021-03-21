@@ -1,7 +1,15 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const data = require("./data");
+const { default: userRouter } = require("./routers/userRouter");
 
 const app = express();
+
+mongoose.connect("mongodb://localhost/amazona", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 const PORT = process.env.PORT || 5000;
 
@@ -12,6 +20,8 @@ app.get("/", (req, res) => {
 app.get("/api/products", (req, res) => {
   res.send(data.products);
 });
+
+app.use("/api/users", userRouter);
 
 app.get("/api/products/:id", (req, res) => {
   const product = data.products.find((x) => x._id === req.params.id);
