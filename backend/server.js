@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const data = require("./data");
-const { default: userRouter } = require("./routers/userRouter");
+const userRouter = require("./routers/userRouter");
 
 const app = express();
 
@@ -30,6 +30,10 @@ app.get("/api/products/:id", (req, res) => {
   } else {
     res.status(404).send({ message: "Product not Found" });
   }
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
 
 app.listen(PORT, () => {
