@@ -5,10 +5,10 @@ import {
 } from "../constants/userConstants";
 import Axios from "axios";
 
-export const signin = ((email, passwordd) = async (dispatch) => {
+export const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQEUST, payload: { email, password } });
   try {
-    const data = await Axios.post("/api/users/sign", { email, password });
+    const data = await Axios.post("/api/users/signin", { email, password });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
@@ -20,4 +20,4 @@ export const signin = ((email, passwordd) = async (dispatch) => {
           : error.message,
     });
   }
-});
+};
