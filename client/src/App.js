@@ -5,14 +5,20 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import ProductPage from "./pages/ProductPage";
 import HomePage from "./pages/HomePage";
 import CartPage from "./pages/CartPage";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SigninPage from "./pages/SigninPage";
+import { signout } from "./actions/userActions";
 
 function App() {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+  const dispatch = useDispatch();
+
+  const signoutHandler = () => {
+    dispatch(signout());
+  };
 
   return (
     <Router>
@@ -31,7 +37,16 @@ function App() {
               )}
             </Link>
             {userInfo ? (
-              <Link to="#">{userInfo.name}</Link>
+              <div className="dropdown">
+                <Link to="#">
+                  {userInfo.data.name} <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <Link to="#signout" onClick={signoutHandler}>
+                    Signout
+                  </Link>
+                </ul>
+              </div>
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
