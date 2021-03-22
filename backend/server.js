@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const data = require("./data");
+const productRouter = require("./routers/productRouter");
 const userRouter = require("./routers/userRouter");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost/amazona", {
+mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -21,7 +22,11 @@ app.get("/api/products", (req, res) => {
   res.send(data.products);
 });
 
+// user router
 app.use("/api/users", userRouter);
+
+// products router
+app.use("/api/products", productRouter);
 
 app.get("/api/products/:id", (req, res) => {
   const product = data.products.find((x) => x._id === req.params.id);
