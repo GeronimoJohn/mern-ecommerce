@@ -1,9 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const productRouter = require("./routers/productRouter");
+const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
 
+dotenv.config();
+
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
