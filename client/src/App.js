@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SigninPage from "./pages/SigninPage";
 import { signout } from "./actions/userActions";
 import RegisterPage from "./pages/RegisterPage";
-import ShippingAddressPage from "./page/ShippingAddressPage";
+import ShippingAddressPage from "./pages/ShippingAddressPage";
 
 function App() {
   const cart = useSelector((state) => state.cart);
