@@ -25,7 +25,7 @@ function CartPage(props) {
   };
 
   const checkoutHandler = () => {
-    props.history.push("./signin?redirec=shipping");
+    props.history.push("./signin?redirect=shipping");
   };
 
   return (
