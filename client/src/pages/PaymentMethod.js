@@ -9,12 +9,12 @@ const PaymentMethod = (props) => {
   if (!shippingAddress.address) {
     props.history.push("/shipping");
   }
-  const [paymentMethod, setPaymentMethod] = useState("Paypal");
+  const [payment, setPayment] = useState("Paypal");
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(savePaymentMethod(paymentMethod));
+    dispatch(savePaymentMethod(payment));
     props.history.push("/placeorder");
   };
 
@@ -33,7 +33,7 @@ const PaymentMethod = (props) => {
             name="paymentMethod"
             required
             checked
-            onChange={(e) => setPaymentMethod(e.target.value)}
+            onChange={(e) => setPayment(e.target.value)}
           />
           <label htmlFor="paypal">Paypal</label>
         </div>
@@ -44,7 +44,7 @@ const PaymentMethod = (props) => {
             value="Stripe"
             name="paymentMethod"
             required
-            onChange={(e) => setPaymentMethod(e.target.value)}
+            onChange={(e) => setPayment(e.target.value)}
           />
           <label htmlFor="stripe">Stripe</label>
         </div>
