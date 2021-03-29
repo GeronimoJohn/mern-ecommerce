@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const productRouter = require("./routers/productRouter");
 const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
+const orderRouter = require("./routers/orderRouter");
 
 dotenv.config();
 
@@ -28,6 +29,9 @@ app.use("/api/users", userRouter);
 
 // products router
 app.use("/api/products", productRouter);
+
+// order router
+app.use("/api/orders", orderRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
