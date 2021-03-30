@@ -9,7 +9,7 @@ import MessageBox from "../component/MessageBox";
 
 const PlaceOrderPage = (props) => {
   const cart = useSelector((state) => state.cart);
-  if (cart.payment) {
+  if (!cart.paymentMethod) {
     props.history.push("/payment");
   }
   const orderCreate = useSelector((state) => state.orderCreate);
@@ -134,7 +134,7 @@ const PlaceOrderPage = (props) => {
                   type="button"
                   onClick={placeOrderHandler}
                   className="primary block"
-                  disabled={cart.cartItems.lenght === 0}
+                  disabled={cart.cartItems.length === 0}
                 >
                   Place Order
                 </button>
