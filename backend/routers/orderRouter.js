@@ -1,13 +1,13 @@
 const express = require("express");
 const expressAsyncHandler = require("express-async-handler");
 const Order = require("../models/orderModel");
-const utils = require("../utils");
+const isAuth = require("../isAuth");
 
 const orderRouter = express.Router();
 
 orderRouter.post(
   "/",
-  utils.isAuth,
+  isAuth,
   expressAsyncHandler(async (req, res) => {
     if (req.body.orderItems.length === 0) {
       res.status(400).send({ message: "Cart is empty" });
