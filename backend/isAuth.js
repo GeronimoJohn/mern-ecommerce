@@ -6,7 +6,7 @@ const isAuth = (req, res, next) => {
     const token = authorization.slice(7, authorization.length);
     jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
       if (err) {
-        res.status(401).send({ message: "Invalid Token" });
+        res.status(401).send({ message: `Invalid Token: ${authorization}` });
       } else {
         req.user = decode;
         next();
