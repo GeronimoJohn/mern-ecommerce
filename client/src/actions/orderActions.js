@@ -4,6 +4,7 @@ import {
   ORDER_CREATE_SUCCESS,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
 } from "../constants/orderConstants";
 import Axios from "axios";
 import { CART_EMPTY } from "../constants/cartConstants";
@@ -44,6 +45,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.data.token}`,
       },
     });
+    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message =
       error.response && error.response.data.message
